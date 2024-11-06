@@ -1,0 +1,151 @@
+/* Tweet List Styles */
+.tweet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tweet-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tweet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.tweet-author {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-name {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.author-username {
+    color: #536471;
+    font-size: 14px;
+}
+
+.tweet-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.tweet-actions button {
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: #536471;
+}
+
+.tweet-actions button:hover {
+    background-color: rgba(29, 161, 242, 0.1);
+    color: var(--primary-color);
+}
+
+.tweet-content {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.tweet-media {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.media-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.tweet-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #536471;
+    font-size: 14px;
+}
+
+.thread-badge {
+    background-color: rgba(29, 161, 242, 0.1);
+    color: var(--primary-color);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+/* Collection List Styles */
+.collections-header {
+    margin-bottom: 20px;
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.collection-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.collection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.collection-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.collection-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.collection-description {
+    color: #536471;
+    margin: 0 0 12px 0;
+    font-size: 14px;
+}
+
+.collection-footer {
+    display: flex;
+    justify-content: space-between;
+    color: #536471;
+    font-size: 14px;
+}
+
+.btn-create-collection {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-create-collection:hover {
+    background-color: #1a91da;
+} 
