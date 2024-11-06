@@ -1,0 +1,91 @@
+:root {
+    --primary-color: #1DA1F2;
+    --sidebar-width: 250px;
+    --header-height: 60px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+#app {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: #ffffff;
+    border-right: 1px solid #e1e8ed;
+    position: fixed;
+    height: 100vh;
+}
+
+.sidebar-header {
+    height: var(--header-height);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e1e8ed;
+}
+
+.sidebar-header h1 {
+    font-size: 20px;
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.nav-items {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.nav-item {
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.nav-item:hover {
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+.nav-item.active {
+    background-color: rgba(29, 161, 242, 0.1);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    background-color: #f7f9fa;
+}
+
+.content-header {
+    height: var(--header-height);
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e1e8ed;
+}
+
+.content-header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.content-area {
+    padding: 30px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #657786;
+} 

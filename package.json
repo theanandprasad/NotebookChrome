@@ -1,0 +1,19 @@
+{
+  "name": "notebookchrome",
+  "version": "1.0.0",
+  "description": "Chrome extension to save tweets and threads",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chrome-extension",
+    "twitter",
+    "bookmark"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^11.0.1"
+  }
+}
