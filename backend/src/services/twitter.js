@@ -1,6 +1,16 @@
 import OAuth from 'oauth-1.0a';
 import crypto from 'crypto';
 import fetch from 'node-fetch';
+import dotenv from 'dotenv';
+
+// Ensure environment variables are loaded
+dotenv.config({ path: new URL('../../.env', import.meta.url) });
+
+// Log the OAuth credentials for debugging
+console.log('Twitter Service Credentials:', {
+    API_KEY: process.env.TWITTER_API_KEY,
+    CALLBACK_URL: process.env.TWITTER_CALLBACK_URL
+});
 
 const oauth = new OAuth({
     consumer: {
@@ -18,29 +28,49 @@ const oauth = new OAuth({
 
 export class TwitterService {
     static async getRequestToken() {
+        // Log OAuth configuration
+        console.log('OAuth Configuration:', {
+            consumer_key: oauth.consumer.key,
+            consumer_secret: oauth.consumer.secret ? '[SECRET]' : undefined
+        });
+        
         const request_data = {
             url: 'https://api.twitter.com/oauth/request_token',
             method: 'POST',
             data: { oauth_callback: process.env.TWITTER_CALLBACK_URL }
         };
 
-        const authorization = oauth.toHeader(oauth.authorize(request_data));
+        // Get authorization header
+        const auth = oauth.authorize(request_data);
+        const headers = oauth.toHeader(auth);
 
         try {
+            console.log('Making request with:', {
+                url: request_data.url,
+                headers: headers,
+                callback: process.env.TWITTER_CALLBACK_URL
+            });
+
             const response = await fetch(request_data.url, {
                 method: request_data.method,
                 headers: {
-                    ...authorization,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                    ...headers,
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Accept': '*/*'
+                },
+                body: new URLSearchParams({
+                    oauth_callback: process.env.TWITTER_CALLBACK_URL
+                }).toString()
             });
 
             if (!response.ok) {
-                console.error('Twitter API Response:', await response.text());
+                const errorText = await response.text();
+                console.error('Twitter API Error Response:', errorText);
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const text = await response.text();
+            console.log('Twitter API Success Response:', text);
             const parsed = new URLSearchParams(text);
             
             return {
