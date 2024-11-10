@@ -6,6 +6,7 @@ export class User {
         this.photoURL = data.photoURL;
         this.createdAt = data.createdAt || new Date();
         this.lastLoginAt = data.lastLoginAt || new Date();
+        this.twitterTokens = data.twitterTokens || null;
     }
 
     toFirestore() {
@@ -14,7 +15,8 @@ export class User {
             displayName: this.displayName,
             photoURL: this.photoURL,
             createdAt: this.createdAt,
-            lastLoginAt: this.lastLoginAt
+            lastLoginAt: this.lastLoginAt,
+            twitterTokens: this.twitterTokens
         };
     }
 
@@ -25,5 +27,9 @@ export class User {
             createdAt: data.createdAt?.toDate(),
             lastLoginAt: data.lastLoginAt?.toDate()
         });
+    }
+
+    isTwitterConnected() {
+        return !!this.twitterTokens;
     }
 } 

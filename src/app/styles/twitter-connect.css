@@ -1,0 +1,63 @@
+.twitter-connect {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.twitter-connect h3 {
+    margin: 0 0 16px 0;
+    color: #14171a;
+}
+
+.connection-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #f7f9fa;
+    border-radius: 4px;
+}
+
+.connection-status.connected {
+    background: #e8f5fd;
+}
+
+.status-text {
+    font-size: 14px;
+    color: #536471;
+}
+
+.connected .status-text {
+    color: #1DA1F2;
+}
+
+.btn-connect,
+.btn-disconnect {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-connect {
+    background-color: #1DA1F2;
+    color: white;
+    border: none;
+}
+
+.btn-connect:hover {
+    background-color: #1a91da;
+}
+
+.btn-disconnect {
+    background-color: white;
+    color: #f4212e;
+    border: 1px solid #f4212e;
+}
+
+.btn-disconnect:hover {
+    background-color: #fee7e9;
+} 

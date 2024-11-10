@@ -174,3 +174,25 @@ body {
 .logout-button:hover {
     background-color: #eff3f4;
 }
+
+/* Add these styles to your existing CSS */
+
+.settings-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.settings-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.settings-section h3 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    color: #14171a;
+}

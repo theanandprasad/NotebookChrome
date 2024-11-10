@@ -5,6 +5,8 @@ import { tweetService } from '../services/tweetService';
 import { collectionService } from '../services/collectionService';
 import { TweetList } from './components/TweetList';
 import { CollectionList } from './components/CollectionList';
+import { TwitterConnect } from './components/TwitterConnect';
+import { twitterService } from '../services/twitterService';
 
 let tweetList;
 let collectionList;
@@ -194,7 +196,43 @@ async function switchView(view) {
             break;
         case 'settings':
             contentHeader.textContent = 'Settings';
-            contentSection.innerHTML = '<div class="settings-page">Settings page coming soon...</div>';
+            const user = await userService.getUser(auth.currentUser.uid);
+            contentSection.innerHTML = `
+                <div class="settings-page">
+                    <div class="settings-section">
+                        <h3>Account Connections</h3>
+                        <div id="twitter-connect"></div>
+                    </div>
+                </div>
+            `;
+            
+            // Initialize Twitter connect component
+            const twitterConnect = new TwitterConnect(
+                document.getElementById('twitter-connect'),
+                async () => {
+                    try {
+                        const result = await twitterService.initializeTwitterAuth();
+                        if (result.oauth_token && result.oauth_token_secret) {
+                            await twitterService.connectTwitter(auth.currentUser.uid, result);
+                            twitterConnect.render(true);
+                        }
+                    } catch (error) {
+                        console.error('Error connecting Twitter:', error);
+                        alert('Failed to connect Twitter account. Please try again.');
+                    }
+                },
+                async () => {
+                    try {
+                        await twitterService.disconnectTwitter(auth.currentUser.uid);
+                        twitterConnect.render(false);
+                    } catch (error) {
+                        console.error('Error disconnecting Twitter:', error);
+                        alert('Failed to disconnect Twitter account. Please try again.');
+                    }
+                }
+            );
+            
+            twitterConnect.render(user.isTwitterConnected());
             break;
     }
 }
